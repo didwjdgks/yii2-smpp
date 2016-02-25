@@ -37,7 +37,6 @@ class ListController extends \yii\console\Controller
     echo "총 페이지수 : $lastPage",PHP_EOL;
 
     for($i=$startPage; $i<=$lastPage; $i++){
-      echo " > page : $i",PHP_EOL;
       if($i>$startPage){
         $res=$httpClient->request('POST','/cop/registcorp/selectRegistCorpListVw.do',[
           'form_params'=>[
@@ -48,8 +47,8 @@ class ListController extends \yii\console\Controller
         $body=$res->getBody();
         $html=(string)$body;
       }
-      $this->parseList($html,function($data) use ($gmanClient){
-        echo '  >> '.join(',',$data),PHP_EOL;
+      $this->parseList($html,function($data) use ($gmanClient,$i){
+        echo "page($i) >> ".join(',',$data),PHP_EOL;
         $gmanClient->doNormal('smpp_corp_get',Json::encode([
           'bizno'=>$data['bizno'],
         ]));
