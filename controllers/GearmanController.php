@@ -244,6 +244,11 @@ class GearmanController extends \yii\console\Controller
       ':update_at'=>time()-(60*60*24*7),
     ]);
 
+    $httpClient->get('https://www.smpp.go.kr/uat/uia/actionLogout.do',[
+      'verify'=>false,
+    ]);
+
+    gc_collect_cycles();
     $this->stdout(sprintf("[%s] Peak memory usage: %s MB\n",date('Y-m-d H:i:s'),(memory_get_peak_usage(true)/1024/1024)),Console::FG_YELLOW);
   }
 

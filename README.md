@@ -1,6 +1,11 @@
-# yii2-smpp
+Smpp
+====
+
 http://www.smpp.go.kr
 
 requires
+--------
+
  - gearman
  - guzzlehttp
+
