@@ -66,7 +66,7 @@ class GearmanController extends \yii\console\Controller
       ]);
     }
 
-    sleep(1);
+    //sleep(1);
     //일반정보
     $res=$httpClient->request('POST','/cop/registcorp/selectRegistCorpGnrlInfoVw.do',[
       'form_params'=>[
@@ -103,7 +103,7 @@ class GearmanController extends \yii\console\Controller
     $bizBasic->save();
     echo PHP_EOL;
 
-    sleep(1);
+    //sleep(1);
     //제품정보
     $res=$httpClient->request('POST','/cop/registcorp/selectRegistCorpPrductInfoListVw.do',[
       'form_params'=>[
@@ -127,7 +127,7 @@ class GearmanController extends \yii\console\Controller
       }
       $bizSmppProd->gname=$data['gname'];
 
-      usleep(500);
+      //usleep(500);
       $res=$httpClient->request('GET','/cop/registcorp/selectRegistCorpPrductInfoDetailVw.do?callback=&bsnmNo='.$workload['bizno'].'&prductNo='.$data['artno']);
       $body=$res->getBody();
       $html=(string)$body;
@@ -150,7 +150,7 @@ class GearmanController extends \yii\console\Controller
       ':update_at'=>time()-(60*60*24*7),
     ]);
 
-    sleep(1);
+    //sleep(1);
     //기술력
     $res=$httpClient->request('POST','/cop/registcorp/selectRegistCorpTssListVw.do',[
       'form_params'=>[
@@ -206,7 +206,7 @@ class GearmanController extends \yii\console\Controller
       ':update_at'=>time()-(60*60*24*7),
     ]);
 
-    sleep(1);
+    //sleep(1);
     //기업특징
     $res=$httpClient->request('POST','/cop/registcorp/selectRegistCorpSfeListVw.do',[
       'form_params'=>[
